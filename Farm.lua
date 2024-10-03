@@ -1,6 +1,6 @@
 local gui = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/testtttt.lua"))():AddWindow("Ro-Ghoul", {
     main_color = Color3.fromRGB(0,0,0),
-    min_size = Vector2.new(373, 340),
+    min_size = Vector2.new(330, 310),
     can_resize = false
 })
 
@@ -14,7 +14,6 @@ local tab1, tab2, tab3, tab4 = gui:AddTab("Main"), gui:AddTab("Farm Options"), g
 local btn, btn2, btn3, key, nmc, trainers, labels
 local findobj, findobjofclass, waitforobj, fire, invoke = get.FindFirstChild, get.FindFirstChildOfClass, get.WaitForChild, Instance.new("RemoteEvent").FireServer, Instance.new("RemoteFunction").InvokeServer
 local player = get.Players.LocalPlayer
-
 repeat wait() until player:FindFirstChild("PlayerFolder")
 
 local team, remotes, stat = player.PlayerFolder.Customization.Team.Value, get.ReplicatedStorage.Remotes, player.PlayerFolder.StatsFunction
@@ -35,11 +34,11 @@ local myData = loadstring(game:HttpGet("https://raw.githubusercontent.com/z4gs/s
         ["Touka Kirishima"] = true,
         ["Nishiki Nishio"] = true
     },
-    DistanceFromNpc = 5,
-    DistanceFromBoss = 8,
-    TeleportSpeed = 150,
-    ReputationFarm = false,
-    ReputationCashout = false,
+    DistanceFromNpc = 2,
+    DistanceFromBoss = 3,
+    TeleportSpeed = 170,
+    ReputationFarm = true,
+    ReputationCashout = true,
     AutoKickWhitelist = ""
 })
 
@@ -153,17 +152,6 @@ for i,v in pairs(array.boss) do
     end):Set(myData.Boss[i])
 end
 
-tab2:AddSlider("TP Speed", function(x)
-    myData.TeleportSpeed = x
-end, {min = 90, max = 250}):Set(45)
-
-tab2:AddSlider("Distance from NPC", function(x)
-    myData.DistanceFromNpc = x * -1
-end, {min = 0, max = 8}):Set(40)
-
-tab2:AddSlider("Distance from Bosses", function(x)
-    myData.DistanceFromBoss = x * -1
-end, {min = 0, max = 15}):Set(35)
 
 labels.p = {label = tab3:AddLabel("Current trainer: "..player.PlayerFolder.Trainers[team.."Trainer"].Value)}
 
