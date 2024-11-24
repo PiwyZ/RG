@@ -34,9 +34,9 @@ local myData = loadstring(game:HttpGet("https://raw.githubusercontent.com/z4gs/s
         ["Touka Kirishima"] = true,
         ["Nishiki Nishio"] = true
     },
-    DistanceFromNpc = -1,
-    DistanceFromBoss = 1,
-    TeleportSpeed = 170,
+    DistanceFromNpc = -2,
+    DistanceFromBoss = -7,
+    TeleportSpeed = 150,
     ReputationFarm = true,
     ReputationCashout = true,
     AutoKickWhitelist = ""
@@ -468,11 +468,9 @@ while true do
 
                     labels("text", "Moving to: "..npc.Name)
 
-                    if myData.Boss[npc.Name] or npc.Parent.Name == "GyakusatsuSpawn" then
-                        tp(npc.HumanoidRootPart.CFrame * CFrame.Angles(math.rad(90),0,0) + Vector3.new(0,myData.DistanceFromBoss,0))
-                    else
-                        tp(npc.HumanoidRootPart.CFrame + npc.HumanoidRootPart.CFrame.lookVector * myData.DistanceFromNpc)
-                    end
+                   
+                    tp(npc.HumanoidRootPart.CFrame + npc.HumanoidRootPart.CFrame.lookVector * myData.DistanceFromNpc)
+
 
                     labels("text", "Killing: "..npc.Name)
                     
@@ -489,7 +487,7 @@ while true do
                                         pressKey(x)
                                     end
                                 end
-                                player.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame * CFrame.Angles(math.rad(90),0,0) + Vector3.new(0,myData.DistanceFromBoss ,0)
+                                player.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame + npc.HumanoidRootPart.CFrame.lookVector * myData.DistanceFromBoss 
                             else
                                 player.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame + npc.HumanoidRootPart.CFrame.lookVector * myData.DistanceFromNpc 
                             end
